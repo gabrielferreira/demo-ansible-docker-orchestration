@@ -3,7 +3,7 @@
   tasks:
   - name: Create destination directory
     file: path=/home/ec2-user/app-container state=directory owner=ec2-user group=ec2-user mode=0775 recurse=yes
-    sudo: yes
+    become: yes
 
   - name: Copy Dockerfile and other files to server
     copy: src={{ item }} dest=/home/ec2-user/app-container mode=0775
@@ -13,19 +13,19 @@
       - site/nginx.conf
 
   - name: Remove container if already running
-    sudo: yes
+    become: yes
     command: docker rm -f dockerapp
     ignore_errors: yes
 
   - name: Remove previous image
-    sudo: yes
+    become: yes
     command: docker rmi -f docker-img
     ignore_errors: yes
 
   - name: Build image
-    sudo: yes
+    become: yes
     command: docker build -t docker-img /home/ec2-user/app-container
 
   - name: Create container
-    sudo: yes
+    become: yes
     command: docker run -i -d -p 80:80 --name dockerapp -t docker-img
