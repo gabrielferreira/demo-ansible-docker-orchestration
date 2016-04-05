@@ -1,9 +1,4 @@
 # demo-ansible-docker-orchestration
-ansible-playbook -i hosts install-docker.yml
-ansible-playbook -i hosts docker-image.yml
-
-
-# demo-ansible-docker-orchestration
 First you need to clone the project
 ```sh
 $ git clone git@github.com:gabrielferreira/demo-ansible-docker-orchestration.git
