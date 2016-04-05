@@ -1,0 +1,22 @@
+---
+- hosts: all
+  tasks:
+  - name: Install pip
+    become: yes
+    yum: name=python-pip state=present
+
+  - name: Upgrade six dependency (issue 155 on ansible-modules-core GitHub)
+    become: yes
+    command: pip install --upgrade six
+
+  - name: Install Docker
+    become: yes
+    yum: name=docker state=latest update_cache=yes
+
+  - name: Install Docker Python Client
+    become: yes
+    pip: name=docker-py state=latest
+
+  - name: Start Docker
+    become: yes
+    service: name=docker state=started args='--storage-opt dm.basesize=20G'
