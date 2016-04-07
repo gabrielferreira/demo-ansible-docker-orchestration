@@ -1,3 +1,3 @@
 [aws]
-52.201.12.118 ansible_ssh_user=ec2-user ansible_ssh_private_key_file=~/Downloads/demo-ansible-docker.pem
-52.201.10.180 ansible_ssh_user=ec2-user ansible_ssh_private_key_file=~/Downloads/demo-ansible-docker.pem
+<IP_HOST> ansible_ssh_user=<USER> ansible_ssh_private_key_file=<KEY_PATH>
+<IP_HOST> ansible_ssh_user=<USER> ansible_ssh_private_key_file=<KEY_PATH>
